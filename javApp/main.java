@@ -7,6 +7,7 @@ import javax.sound.sampled.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.Image;
 import java.io.File;
 
 public class main {
@@ -39,6 +40,10 @@ public class main {
         // Créer une instance de JFrame (la fenêtre)
         JFrame fenetre = new JFrame("Narty game launcher");
 
+        // Définir l'icône de la fenêtre
+        Image icone = Toolkit.getDefaultToolkit().getImage("icone.jpg");
+        fenetre.setIconImage(icone);
+
 	  // Créer un composant ImageIcon (une image)
         ImageIcon image = new ImageIcon("./image.png");
 
@@ -53,6 +58,7 @@ public class main {
 
 	    // Empêcher la redimensionnement de la fenêtre
         fenetre.setResizable(false);
+        // fenetre.pack(); pour que la taille de la fenetre s'adapte a son contenu
 
         // Creer un bouton
         JButton bouton = new JButton("Cliquez ici !");
