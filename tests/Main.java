@@ -1,5 +1,3 @@
-package tests;
-
 public class Main {
     public static void main(String[] args) {
       
@@ -13,6 +11,5 @@ public class Main {
         player2.setName("Test");
         player1.damage(player1.getAttack());
         System.out.println("nom :" +player2.getName());
-
     }
 }

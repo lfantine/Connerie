@@ -1,5 +1,3 @@
-package tests;
-
 public class Player {
 
    private String name; 
@@ -35,6 +33,5 @@ public class Player {
    public void setAttack(double attack) {
         this.attack = attack;
    }
-
 
 }

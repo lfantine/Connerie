@@ -10,5 +10,4 @@ public abstract class Fruit {
         System.out.println("Miam 5 fr et leg/j");
     }
 
-
 }
