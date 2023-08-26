@@ -4,7 +4,17 @@ public class Player {
    private double health; 
    private double attack;
    
-   public Player(String name, double attack, double health) {
+     // public Player() {
+     //    this.name = "default";
+     //    this.attack = 0;
+     //    this.health = 0;
+     // }
+     // public Player(String name) {
+     //    this.name = name;
+     //    this.attack = 0;
+     //    this.health = 0;
+     // }
+     public Player(String name, double attack, double health) {
         this.name = name;
         this.attack = attack;
         this.health = health;

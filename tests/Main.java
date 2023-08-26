@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
       
-        Player player1 = new Player("link", 20.0,1500.0);
+        Player player1 = new Player();
         System.out.println("nom :" +player1.getName());
         System.out.println("vie :"+player1.getHealth());
     

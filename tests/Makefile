@@ -8,7 +8,6 @@ JAVAC_FLAGS = -g
 
 FILE= ./Main.java \
 	./Player.java \
-	../Fruit.java \
 
 default: $(PROGRAM)$(EXE_EXT)
 
