@@ -20,6 +20,7 @@ $(PROGRAM)$(EXE_EXT):
 clean:
 	@del *.class
 
+
 re: clean $(PROGRAM)$(EXE_EXT)
 
 .PHONY: default clean re
