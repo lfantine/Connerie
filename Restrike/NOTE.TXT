@@ -1,0 +1,5 @@
+Pour les build , pas de makefile mais utiliser un outil de build comme gradle (hot reload possible)
+
+Actuel : swing ( plus ancien )
+
+a voir : javaFx ( plus moderne )
