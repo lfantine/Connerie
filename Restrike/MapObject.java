@@ -15,7 +15,7 @@ public  class MapObject extends Gameobject {
 
 	protected int id;
 
-	public MapObject(int id_t, int layer_t) {
+	public MapObject(int id_t, int layer_t, int posX_t, int posY_t) {
 		this.id = id_t;
 		int col = (id % 100) - 1; // Ligne de la texture que vous voulez extraire
             int row = ((id - col) / 100) - 1; // Colonne de la texture que vous voulez extraire
@@ -33,6 +33,8 @@ public  class MapObject extends Gameobject {
 			// super(reziseImage, layer_t);
 			width = reziseImage.getWidth(null);
 			height = reziseImage.getHeight(null);
+			posX = posX_t;
+			posY = posY_t;
 			image = reziseImage;
 			layer = layer_t;
 			ImageIcon icon = new ImageIcon(image);

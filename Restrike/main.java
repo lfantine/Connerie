@@ -91,19 +91,40 @@ public class main {
         game.applyBackground(window, "data/uses/sky1.png", false);
         game.centerWindow(window);
 
-        MapObject grass = new MapObject(3003, 1);
-        grass.jlabel.setBounds(env.getMapSize(), env.getMapSize(), env.getMapSize(), env.getMapSize());
-        window.add(grass.jlabel, JLayeredPane.PALETTE_LAYER);
-        MapObject grass2 = new MapObject(3103, 1);
-        grass2.jlabel.setBounds(env.getMapSize(), env.getMapSize() * 2, env.getMapSize(), env.getMapSize());
-        window.add(grass2.jlabel, JLayeredPane.PALETTE_LAYER);
+        game.makeMap(env.HOME_FILE, window, env);
 
-        MapObject grass3 = new MapObject(3003, 1);
-        grass3.jlabel.setBounds(env.getMapSize() * 2, env.getMapSize(), env.getMapSize(), env.getMapSize());
-        window.add(grass3.jlabel, JLayeredPane.PALETTE_LAYER);
-        MapObject grass4 = new MapObject(3103, 1);
-        grass4.jlabel.setBounds(env.getMapSize() * 2, env.getMapSize() * 2, env.getMapSize(), env.getMapSize());
-        window.add(grass4.jlabel, JLayeredPane.PALETTE_LAYER);
+        timestart = System.currentTimeMillis();
+        timenow = System.currentTimeMillis();
+        ok = true;
+
+        while(ok) {
+            if (timestart - nowTime <= -1000) {
+                ok = false;
+            }
+            else {
+                nowTime = System.currentTimeMillis();
+                System.out.print("time is : " + -(timestart - nowTime) + "\r");
+            }
+        }
+        System.out.println("");
+
+        game.clearMap(window);
+
+        timestart = System.currentTimeMillis();
+        timenow = System.currentTimeMillis();
+        ok = true;
+
+        while(ok) {
+            if (timestart - nowTime <= -500) {
+                ok = false;
+            }
+            else {
+                nowTime = System.currentTimeMillis();
+                System.out.print("time is : " + -(timestart - nowTime) + "\r");
+            }
+        }
+        System.out.println("");
+
         return ;
     }
 

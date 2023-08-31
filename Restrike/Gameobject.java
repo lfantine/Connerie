@@ -7,13 +7,11 @@ import javax.sound.sampled.*;
 public abstract class Gameobject {
 	protected int	width;
 	protected int	height;
+	public int		posX;
+	public int		posY;
 	protected int	layer;
 	protected Image	image;
 	public JLabel	jlabel;
 	protected Env 	env = new Env();
 
-
-	// public	Gameobject(Image image_t, int layer_t) {
-		
-	// }
 }

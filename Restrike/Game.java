@@ -1,4 +1,4 @@
-
+import environnement.Env;
 import javax.swing.*; // pour tout les JFrameJbutton ect
 import java.awt.*; // import java.awt.Toolkit;
 import java.io.*;
@@ -86,6 +86,10 @@ public class Game {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(cheminSon).getAbsoluteFile());
 			backSoundTemp = AudioSystem.getClip();
 			backSoundTemp.open(audioInputStream);
+			FloatControl gainControl = (FloatControl) backSoundTemp.getControl(FloatControl.Type.MASTER_GAIN);
+			// Réduire le volume (en dB)
+			float volumeReductionInDecibels = -30.0f; // Par exemple, réduction de 10 dB
+			gainControl.setValue(volumeReductionInDecibels);
 			backSoundTemp.addLineListener(new LineListener() {
 				@Override
 				public void update(LineEvent event) {
@@ -111,19 +115,62 @@ public class Game {
 		backSoundTemp = null;
 	}
 
-	public static void makeMap(String mapPath, JFrame window) {
+	public static int takeId(char c) {
+		if (c == ' ')
+			return -1;
+		if (c == 'G')
+			return 3003;
+		if (c == 'g')
+			return 3004;
+		if (c == 'D')
+			return 3103;
+		if (c == 'd')
+			return 3104;
+		
+		return 1001;
+	}
+
+	public static void makeMap(String mapPath, JFrame window, Env env) {
 		int	winHeight = window.getHeight();
 		int	winWidth = window.getWidth();
-		// try {
-		// 	// BufferedReader br = new BufferedReader(new FileReader(file));
-		// 	// String line = br.readLine();
-		// 	// for (int i = 1; i < line_nb; i++) {
-		// 	// 	line = br.readLine();
-		// 	// }
-			
-		// 	return ;
-		// } catch (IOException e) {
-		// 	return ;
-		// }
+		int nbL = 0;
+		int imgSize = env.getMapSize();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(mapPath));
+			String line = br.readLine();
+			while (line != null) {
+				nbL++;
+				line = br.readLine();
+			}
+			BufferedReader br2 = new BufferedReader(new FileReader(mapPath));
+			String line2;
+			int	actualheight = winHeight - (nbL * imgSize);
+			System.out.println("actual " + actualheight + " tall");
+			for (int i = 0; i < nbL; i++) {
+				line2 = br2.readLine();
+				int	actualWidth = 0;
+				for (int j = 0; j < line2.length(); j++) {
+					int id = takeId(line2.charAt(j));
+					if (id != -1) {
+						MapObject obj = new MapObject(id, 1, actualWidth, actualheight);
+						obj.jlabel.setBounds(actualWidth, actualheight, imgSize, imgSize);
+						window.add(obj.jlabel, JLayeredPane.PALETTE_LAYER);
+						map.add(obj);
+					}
+					actualWidth += imgSize;
+				}
+				actualheight += imgSize;
+			}
+			return ;
+		} catch (IOException e) {
+			return ;
+		}
+	}
+
+	public static void clearMap(JFrame window) {
+		while (!map.isEmpty()) {
+			window.remove(map.get(0));
+			map.remove(0);
+		}
 	}
 }

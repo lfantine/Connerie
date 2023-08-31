@@ -12,6 +12,7 @@ public class Env {
     public static final String SETUP_FILE = "data/settings/setup.txt";
     public static int[] listW  = {720, 1280, 1920};
     public static int[] listH  = {480, 720, 1080};
+    public static final String HOME_FILE = "data/uses/map/t1.map";
 
     public boolean setupOK() {
         try {
@@ -22,7 +23,7 @@ public class Env {
                     System.out.println("Fichier de setup créé avec succès.");
                     try {
                         FileWriter fw = new FileWriter(SETUP_FILE);
-                        fw.write("size = 0\nfps  = 60");
+                        fw.write("size = 0\nfps  = 60\nmapSize = 64");
                         fw.close();
                         System.out.println("Contenu écrit avec succès.");
                     } catch (IOException e) {
